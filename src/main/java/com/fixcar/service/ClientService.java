@@ -23,7 +23,7 @@ public class ClientService {
         System.out.println("First name: ");
         String firstName = Main.SCANNER.nextLine();
 
-        if (!isNameValid(firstName)) {
+        if (!isValidName(firstName)) {
             System.out.println("Provided first name is invalid.");
             return client;
         }
@@ -31,7 +31,7 @@ public class ClientService {
         System.out.println("Last name: ");
         String lastName = Main.SCANNER.nextLine();
 
-        if (!isNameValid(lastName)) {
+        if (!isValidName(lastName)) {
             System.out.println("Provided last name is invalid.");
             return client;
         }
@@ -55,7 +55,7 @@ public class ClientService {
         return matcher.matches();
     }
 
-    private static boolean isNameValid(String name) {
+    private static boolean isValidName(String name) {
         Pattern pattern = Pattern.compile(NAME_PATTERN);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();

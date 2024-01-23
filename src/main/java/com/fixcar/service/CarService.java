@@ -24,7 +24,7 @@ public class CarService {
         Car car = buildCar(CAR_MARK);
         Vw vw = carToVw(car);
 
-        System.out.print("Type (Privet / Comercial): ");
+        System.out.print("Type (Privet / Commercial): ");
         vw.setSize(Main.SCANNER.nextLine());
 
         return vw;
@@ -32,6 +32,7 @@ public class CarService {
 
     private Vw carToVw(Car car) {
         Vw vw = new Vw();
+        vw.setMark(car.getMark());
         vw.setModel(car.getModel());
         vw.setAge(car.getAge());
         vw.setColor(car.getColor());
@@ -48,7 +49,6 @@ public class CarService {
 
         System.out.print("Age: ");
         car.setAge(Main.SCANNER.nextLine());
-
 
         System.out.print("Color (Black / White): ");
         car.setAge(Main.SCANNER.nextLine());
