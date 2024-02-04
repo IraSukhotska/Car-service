@@ -3,7 +3,17 @@ package main.java.com.fixcar.model;
 import java.util.Objects;
 
 public class Vw extends Car {
+    public static final String classA = "Class A";
+    public static final String classB = "Class B";
+    public static final String classC = "Class C";
+    public static final String classD = "Class D";
+    public static final String SUV = "SUV";
+    public static final String Comerc = "Comercial";
     private String type;
+    public Vw() { }
+    public Vw(String type) {
+        this.type = type;
+    }
     @Override
     public String toString () {
         return "Vw {"
