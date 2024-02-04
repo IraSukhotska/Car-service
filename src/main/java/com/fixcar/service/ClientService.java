@@ -10,14 +10,13 @@ public class ClientService {
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
     private static final String NAME_PATTERN = "^[a-zA-Z0-9-]{2,}$";
     public Client registerNewClient() {
-        Client client = null;
         System.out.println("Please provide a client details.");
         System.out.print("Email: ");
         String email = Main.SCANNER.nextLine();
 
         if (!isEmailValid(email)) {
             System.out.println("Provided email is invalid.");
-            return client;
+            return null;
         }
 
         System.out.println("First name: ");
@@ -25,7 +24,7 @@ public class ClientService {
 
         if (!isValidName(firstName)) {
             System.out.println("Provided first name is invalid.");
-            return client;
+            return null;
         }
 
         System.out.println("Last name: ");
@@ -33,9 +32,9 @@ public class ClientService {
 
         if (!isValidName(lastName)) {
             System.out.println("Provided last name is invalid.");
-            return client;
+            return null;
         }
-        client = buildClient(email, firstName, lastName);
+        Client client = buildClient(email, firstName, lastName);
         System.out.println("New client: " + client.getFirstName() + " "
                 + client.getLastName() + " ("
                 + client.getEmail() + ")");

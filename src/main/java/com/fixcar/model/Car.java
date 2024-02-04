@@ -2,7 +2,7 @@ package main.java.com.fixcar.model;
 
 import java.util.Objects;
 
-public class Car {
+public abstract class Car {
     private String mark;
     private String model;
     private String age;

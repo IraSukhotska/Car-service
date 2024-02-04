@@ -1,5 +1,6 @@
 package main.java.com.fixcar.component;
 
+import main.java.com.fixcar.Main;
 import main.java.com.fixcar.model.Car;
 import main.java.com.fixcar.model.Client;
 import main.java.com.fixcar.service.CarService;
@@ -11,10 +12,20 @@ public class ApplicationRunner {
     public void run() {
         if (Authenticator.auth()) {
             Client client = clientService.registerNewClient();
+            if (client == null) {
+                return;
+            }
 
-            if (client != null) {
-                System.out.println("Adding a new car.");
-                Car car = carService.registerNewCar();
+            System.out.println("Do you want to register new car? (Y/N)");
+            String isNewCar = Main.SCANNER.nextLine();
+            if (isNewCar.equals("N")) {
+                return;
+            }
+
+            System.out.println("Adding a new car.");
+            Car car = carService.registerNewCar();
+
+            if (car != null) {
                 client.setCar(car);
                 car.setOwnerName(client.getFirstName() + " " + client.getLastName());
                 System.out.println("Car has been added.");
