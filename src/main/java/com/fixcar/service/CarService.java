@@ -1,47 +1,30 @@
 package main.java.com.fixcar.service;
 import main.java.com.fixcar.Main;
 import main.java.com.fixcar.model.Car;
+import main.java.com.fixcar.model.Skoda;
 import main.java.com.fixcar.model.Vw;
 
 public class CarService {
-    private static final String CAR_MARK = "Vw";
+    private static final String VW_TYPE = "Vw";
+    private static final String SKODA_TYPE = "Skoda";
     public Car registerNewCar(){
-        Car car = new Car();
+        Car car = null;
 
-        System.out.print("Mark (Vw / Skoda / Audi / Seat): ");
+        System.out.print("Mark (Vw / Skoda): ");
         String mark = Main.SCANNER.nextLine();
-        car.setMark(mark);
 
-        if (CAR_MARK.equals(mark)) {
-            car = buildVw();
-        } else {
+
+        if (VW_TYPE.equals(mark) || SKODA_TYPE.equals(mark)) {
             car = buildCar(mark);
+        } else {
+            System.out.println("Unknown car mark: " + mark);
         }
         return car;
     }
 
-    private Vw buildVw() {
-        Car car = buildCar(CAR_MARK);
-        Vw vw = carToVw(car);
-
-        System.out.print("Type (Privet / Commercial): ");
-        vw.setSize(Main.SCANNER.nextLine());
-
-        return vw;
-    }
-
-    private Vw carToVw(Car car) {
-        Vw vw = new Vw();
-        vw.setMark(car.getMark());
-        vw.setModel(car.getModel());
-        vw.setAge(car.getAge());
-        vw.setColor(car.getColor());
-
-        return vw;
-    }
 
     private Car buildCar(String mark) {
-        Car car = new Car();
+        Car car = mark.equals(SKODA_TYPE) ? new Skoda() : new Vw();
         car.setMark(mark);
 
         System.out.print("Model: ");
@@ -51,8 +34,12 @@ public class CarService {
         car.setAge(Main.SCANNER.nextLine());
 
         System.out.print("Color (Black / White): ");
-        car.setAge(Main.SCANNER.nextLine());
+        car.setColor(Main.SCANNER.nextLine());
 
+        if (mark.equals(VW_TYPE)) {
+            System.out.println("Type (Privet / Commercial): ");
+            ((Vw) car).setType(Main.SCANNER.nextLine() );
+        }
         return car;
     }
 }

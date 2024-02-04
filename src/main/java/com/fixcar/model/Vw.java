@@ -3,7 +3,7 @@ package main.java.com.fixcar.model;
 import java.util.Objects;
 
 public class Vw extends Car {
-    private String size;
+    private String type;
     @Override
     public String toString () {
         return "Vw {"
@@ -11,7 +11,7 @@ public class Vw extends Car {
                 + ", model = " + getModel()
                 + ", age = " + getAge()
                 + ", color = " + getColor()
-                + ", size = " + size
+                + ", type = " + type
                 + ", owner name = " + getOwnerName()
                 + "\n}";
     }
@@ -22,19 +22,19 @@ public class Vw extends Car {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Vw vw = (Vw) o;
-        return Objects.equals(size, vw.size);
+        return Objects.equals(type, vw.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), size);
+        return Objects.hash(super.hashCode(), type);
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getSize() {
-        return size;
+    public String getType() {
+        return type;
     }
 }
